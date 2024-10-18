@@ -73,6 +73,7 @@ Interested in a sublicense agreement for use of NodeBB in a non-free/restrictive
 ## Team Members
 
 * Miguel Ángel Arturo Gordillo Arismendi 18-10807
+* Kevin Jesus Oporto Hernandez           13-11007
 
 ## More Information/Links
 
