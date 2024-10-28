@@ -130,13 +130,14 @@ define('forum/topic/postTools', [
 		postContainer.on('show.bs.dropdown', '[component="post/tools"]', function () {
 			const dropdownMenu = $(this).find('.dropdown-menu');
 			if (!dropdownMenu.find('[component="post/report"]').length) {
-				// Si el usuario tiene permisos para reportar post, se agrega la opcion de reportar en el menu de opciones del post.
+				// Si el usuario tiene permisos para reportar post, 
+				// se agrega la opcion de reportar en el menu de opciones del post.
 				dropdownMenu.append(`
 					<button class="btn-report dropdown-item" component="post/report">
 						<i class="flex-shrink-0 fa-solid fa-ban text-danger" aria-hidden="true"></i> Report
 					</button>`);
 				postContainer.on('click', '[component="post/report"]', function () {
-					//llamada a la funcion reportPost
+					// llamada a la funcion reportPost
 					return reportPost($(this), getData($(this), 'data-pid'));
 				});
 			}
@@ -374,7 +375,7 @@ define('forum/topic/postTools', [
 				id: pid,
 			});
 		});
-		return false
+		return false;
 	}
 
 
