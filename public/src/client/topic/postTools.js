@@ -1,5 +1,6 @@
 'use strict';
 
+const { find } = require('lodash');
 
 define('forum/topic/postTools', [
 	'share',
@@ -76,7 +77,7 @@ define('forum/topic/postTools', [
 	PostTools.toggle = function (pid, isDeleted) {
 		const postEl = components.get('post', 'pid', pid);
 
-		postEl.find('[component="post/quote"], [component="post/bookmark"], [component="post/reply"], [component="post/flag"], [component="user/chat"]')
+		postEl.find('[component="post/quote"], [component="post/bookmark"], [component="post/report"], [component="post/reply"], [component="post/flag"], [component="user/chat"]')
 			.toggleClass('hidden', isDeleted);
 
 		postEl.find('[component="post/delete"]').toggleClass('hidden', isDeleted).parent().attr('hidden', isDeleted ? '' : null);
@@ -123,6 +124,22 @@ define('forum/topic/postTools', [
 					body: body,
 				});
 			});
+		});
+
+		// Reporte de post en el menu de opciones del post.
+		postContainer.on('show.bs.dropdown', '[component="post/tools"]', function () {
+			const dropdownMenu = $(this).find('.dropdown-menu');
+			if (!dropdownMenu.find('[component="post/report"]').length) {
+				// Si el usuario tiene permisos para reportar post, se agrega la opcion de reportar en el menu de opciones del post.
+				dropdownMenu.append(`
+					<button class="btn-report dropdown-item" component="post/report">
+						<i class="flex-shrink-0 fa-solid fa-ban text-danger" aria-hidden="true"></i> Report
+					</button>`);
+				postContainer.on('click', '[component="post/report"]', function () {
+					//llamada a la funcion reportPost
+					return reportPost($(this), getData($(this), 'data-pid'));
+				});
+			}
 		});
 
 		postContainer.on('click', '[component="post/bookmark"]', function () {
@@ -348,6 +365,18 @@ define('forum/topic/postTools', [
 		}
 		return { text: selectedText, pid: selectedPid, username: username };
 	}
+
+	// Reporte de post en el menu de opciones del post.
+	function reportPost(button, pid) {
+		require(['flags'], function (flags) {
+			flags.showFlagModal({
+				type: 'post',
+				id: pid,
+			});
+		});
+		return false
+	}
+
 
 	function bookmarkPost(button, pid) {
 		const method = button.attr('data-bookmarked') === 'false' ? 'put' : 'del';
