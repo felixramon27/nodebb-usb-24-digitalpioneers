@@ -34,6 +34,26 @@
 	</div>
 	{{{end}}}
 
+<!-- Desde aqui es el cambio -->
+	<div class="row mb-3">
+		<div class="col-12 col-sm-8 offset-sm-2">
+			<div class="card">
+				<div class="card-body">
+					<div class="form-group">
+						<h4> Rol de Usuario </h4>
+						<p>Además de estos datos te pediremos que nos proporciones tu rol dentro de la universidad, es decir, si eres profesor o estudiant. Esto con la finalidad de otorgarte acceso a las funcionalidades del foro, según lo amerite.</p>
+						<label for="role"> Selecciona tu rol: </label>
+						<select class="form-control" id="selectRole" name="selectRole">
+							<option value="user"> Estudiante </option>
+							<option value="admin"> Profesor </option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Hasta aqui -->
+
 	<div class="row mt-3">
 		<div class="col-12 col-sm-8 offset-sm-2 d-grid">
 			<button class="btn btn-primary">[[topic:composer.submit]]</button>
