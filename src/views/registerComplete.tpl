@@ -21,19 +21,7 @@
 
 <form role="form" method="post" action="{config.relative_path}/register/complete" enctype="multipart/form-data">
 	<input type="hidden" name="csrf_token" value="{config.csrf_token}" />
-
-	{{{each sections}}}
-	<div class="row mb-3">
-		<div class="col-12 col-sm-8 offset-sm-2">
-			<div class="card">
-				<div class="card-body">
-					{@value}
-				</div>
-			</div>
-		</div>
-	</div>
-	{{{end}}}
-
+	
 <!-- Desde aqui es el cambio -->
 	<div class="row mb-3">
 		<div class="col-12 col-sm-8 offset-sm-2">
@@ -54,6 +42,18 @@
 		</div>
 	</div>
 <!-- Hasta aqui -->
+
+	{{{each sections}}}
+	<div class="row mb-3">
+		<div class="col-12 col-sm-8 offset-sm-2">
+			<div class="card">
+				<div class="card-body">
+					{@value}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{{end}}}
 
 	<div class="row mt-3">
 		<div class="col-12 col-sm-8 offset-sm-2 d-grid">
