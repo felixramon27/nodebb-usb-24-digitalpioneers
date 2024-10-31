@@ -40,13 +40,14 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="form-group">
-						<h4> Rol de Usuario </h4>
-						<p>Además de estos datos te pediremos que nos proporciones tu rol dentro de la universidad, es decir, si eres profesor o estudiant. Esto con la finalidad de otorgarte acceso a las funcionalidades del foro, según lo amerite.</p>
-						<label for="role"> Selecciona tu rol: </label>
+						<h4> Rol de usuario </h4>
+						<p>Esta información es esencial para personalizar tu experiencia y garantizar que accedas a las funcionalidades adecuadas. Si eres estudiante, podrás comunicarte fácilmente con tus profesores y compañeros, recibir retroalimentación y acceder a recursos específicos para tu aprendizaje. Si eres profesor, podrás gestionar las consultas de tus alumnos, crear grupos y mantener una comunicación fluida (p.ej: eliminar mensajes indeseados). Al elegir correctamente tu rol, aseguramos que obtengas el máximo provecho de nuestra plataforma.</p>
+						<label for="role" class="mb-3"> Selecciona tu rol: </label>
 						<select class="form-control" id="selectRole" name="selectRole">
 							<option value="user"> Estudiante </option>
 							<option value="admin"> Profesor </option>
 						</select>
+						<p><small> Si no seleccionas ningún rol, por defecto se te asignará rol de estudiante. </small></p>
 					</div>
 				</div>
 			</div>
