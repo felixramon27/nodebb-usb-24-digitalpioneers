@@ -48,6 +48,17 @@ NodeBB requires the following software to be installed:
 [Please refer to platform-specific installation documentation](https://docs.nodebb.org/installing/os).
 If installing via the cloud (or using Docker), [please see cloud-based installation documentation](https://docs.nodebb.org/installing/cloud/).
 
+## Aditional Plugins
+
+To run the additional plugins that were implemented, you need to activate them manually. To do this, for each folder within the "plugins" folder you must perform: 
+* Go to each folder
+* Run "sudo npm link"
+* Return to the outermost folder
+* Run "npm link [folder name in plugin]"
+* Run "./nodebb activate [plugin folder name]"
+
+Once these steps have been carried out for each folder within the plugin, you will have installed and activated the plugins created for this project
+
 ## Securing NodeBB
 
 It is important to ensure that your NodeBB and database servers are secured. Bear these points in mind:
