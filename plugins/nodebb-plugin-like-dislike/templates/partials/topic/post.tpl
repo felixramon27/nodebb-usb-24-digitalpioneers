@@ -108,7 +108,7 @@
 			<a component="post/upvote" href="#" class="btn-ghost-sm{{{ if posts.upvoted }}} upvoted{{{ end }}}" title="[[topic:upvote-post]]">
 			<span class="menu-icon">
 				<i class="fa-regular fa-thumbs-up text-primary {{{ if !posts.upvoted }}}hidden{{{ end }}}" title="Like the comment"></i>
-				<i class="fa-regular fa-thumbs-up text-primary {{{ if posts.upvoted }}}hidden{{{ end }}}"></i>
+				<i class="fa-regular fa-thumbs-up text-primary {{{ if posts.upvoted }}}hidden{{{ end }}}" title="Like the comment"></i>
 			</span>
 
 			</a>
@@ -121,7 +121,7 @@
 			<a component="post/downvote" href="#" class="btn-ghost-sm{{{ if posts.downvoted }}} downvoted{{{ end }}}" title="[[topic:downvote-post]]">
 			<span class="menu-icon">
 				<i class="fa-regular fa-thumbs-down text-primary {{{ if posts.downvoted }}}hidden{{{ end }}}" title="Dislike the comment"></i>
-				<i class="fa-solid fa-thumbs-down text-primary {{{ if !posts.downvoted }}}hidden{{{ end }}}"></i>
+				<i class="fa-solid fa-thumbs-down text-primary {{{ if !posts.downvoted }}}hidden{{{ end }}}" title="Dislike the comment"></i>
 			</span>
 			</a>
 			{{{ end }}}
