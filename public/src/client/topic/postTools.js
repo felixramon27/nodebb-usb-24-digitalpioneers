@@ -1,5 +1,6 @@
 'use strict';
 
+
 define('forum/topic/postTools', [
 	'share',
 	'navigator',
@@ -123,7 +124,7 @@ define('forum/topic/postTools', [
 				});
 			});
 		});
-		
+
 		postContainer.on('click', '[component="post/bookmark"]', function () {
 			return bookmarkPost($(this), getData($(this), 'data-pid'));
 		});
