@@ -106,7 +106,7 @@
         {{{ if !reputation:disabled }}}
 		<div class="d-flex votes align-items-center">
 			<a component="post/upvote" href="#" class="btn-ghost-sm{{{ if posts.upvoted }}} upvoted{{{ end }}}" title="[[topic:upvote-post]]">
-				<i class="fa fa-fw fa-chevron-up text-primary"></i>
+				<i class="fa-regular fa-thumbs-up"></i>
 			</a>
 
 			<meta itemprop="upvoteCount" content="{posts.upvotes}">
@@ -115,7 +115,7 @@
 
 			{{{ if !downvote:disabled }}}
 			<a component="post/downvote" href="#" class="btn-ghost-sm{{{ if posts.downvoted }}} downvoted{{{ end }}}" title="[[topic:downvote-post]]">
-				<i class="fa fa-fw fa-chevron-down text-primary"></i>
+				<i class="fa-regular fa-thumbs-down"></i>
 			</a>
 			{{{ end }}}
 		</div>
