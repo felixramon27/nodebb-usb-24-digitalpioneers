@@ -446,8 +446,23 @@ define('forum/chats', [
 				case 'unpin':
 					pinnedMessages.unpin(messageId, roomId);
 					break;
+				case 'report': // Nuevo caso para reportar
+					Chats.reportMessage(messageId, roomId);
+					break;
 			}
 		});
+	};
+
+	// Nueva función para manejar el reporte del mensaje
+	Chats.reportMessage = function (messageId, roomId) {
+		require(['flags'], function (flags) {
+			flags.showFlagModal({
+				type: 'chat-message',
+				id: messageId,
+				roomId: roomId,
+			});
+		});
+		return false;
 	};
 
 	Chats.addHotkeys = function () {
