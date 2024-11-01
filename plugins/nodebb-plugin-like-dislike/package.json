@@ -1,0 +1,16 @@
+{
+    "name": "nodebb-plugin-like-dislike",
+    "version": "1.0.0",
+    "description": "Plugin para reflejar puntuacion basada en likes y dislikes",
+    "main": "library.js",
+    "keywords": [
+      "nodebb",
+      "plugin",
+      "like",
+      "dislike"
+    ],
+    "license": "MIT",
+    "nbbpm": {
+      "compatibility": "^3.0.0"
+    }
+}
