@@ -1,0 +1,6 @@
+{
+  "id": "nodebb-plugin-like-dislike",
+  "url": "nodebb-plugin-like-dislike",
+  "library": "library.js",
+  "templates": "./templates"
+}
