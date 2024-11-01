@@ -22,6 +22,27 @@
 <form role="form" method="post" action="{config.relative_path}/register/complete" enctype="multipart/form-data">
 	<input type="hidden" name="csrf_token" value="{config.csrf_token}" />
 
+<!-- Desde aqui es el cambio -->
+	<div class="row mb-3">
+		<div class="col-12 col-sm-8 offset-sm-2">
+			<div class="card">
+				<div class="card-body">
+					<div class="form-group">
+						<h4> Rol de usuario </h4>
+						<p>Esta información es esencial para personalizar tu experiencia y garantizar que accedas a las funcionalidades adecuadas. Si eres estudiante, podrás comunicarte fácilmente con tus profesores y compañeros, recibir retroalimentación y acceder a recursos específicos para tu aprendizaje. Si eres profesor, podrás gestionar las consultas de tus alumnos, crear grupos y mantener una comunicación fluida (p.ej: eliminar mensajes indeseados). Al elegir correctamente tu rol, aseguramos que obtengas el máximo provecho de nuestra plataforma.</p>
+						<label for="role" class="mb-3"> ¿Con qué rol quieres registrarte?: </label>
+						<select class="form-control" id="selectRole" name="selectRole">
+							<option value="user"> Estudiante </option>
+							<option value="admin"> Profesor </option>
+						</select>
+						<p><small> Si no seleccionas ningún rol, por defecto se te asignará rol de estudiante. </small></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Hasta aqui -->
+
 	{{{each sections}}}
 	<div class="row mb-3">
 		<div class="col-12 col-sm-8 offset-sm-2">
