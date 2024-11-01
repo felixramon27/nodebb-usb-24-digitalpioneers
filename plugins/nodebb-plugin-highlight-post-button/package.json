@@ -1,0 +1,17 @@
+{
+    "name": "nodebb-plugin-highlight-post-button",
+    "version": "1.0.0",
+    "description": "Plugin para destacar un post",
+    "main": "library.js",
+    "keywords": [
+      "nodebb",
+      "plugin",
+      "highlight",
+      "post",
+      "button"
+    ],
+    "license": "MIT",
+    "nbbpm": {
+      "compatibility": "^3.0.0"
+    }
+}
