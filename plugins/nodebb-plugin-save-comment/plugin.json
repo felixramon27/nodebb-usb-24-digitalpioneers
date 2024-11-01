@@ -1,0 +1,6 @@
+{
+  "id": "nodebb-plugin-save-comment",
+  "url": "nodebb-plugin-save-comment",
+  "library": "library.js",
+  "templates": "./templates"
+}
