@@ -20,9 +20,15 @@ define('forum/topic/postTools', [
 	PostTools.init = function (tid) {
 		staleReplyAnyway = false;
 
+		const postContainer = components.get('topic');
+		if (!postContainer) {
+			console.error('Contenedor de tema no encontrado.');
+			return;
+		}
+
 		renderMenu();
 
-		addPostHandlers(tid);
+		addPostHandlers(tid, postContainer);
 
 		share.addShareHandlers(ajaxify.data.titleRaw);
 
@@ -98,8 +104,29 @@ define('forum/topic/postTools', [
 		navigator.setCount(postCount);
 	};
 
-	function addPostHandlers(tid) {
-		const postContainer = components.get('topic');
+	function addPostHandlers(tid, postContainer) {
+		// Evento para cambiar el estado de destacado
+		postContainer.on('click', '[component="post/highlight"]', function () {
+			const postEl = $(this).closest('[data-pid]');
+			const isHighlighted = postEl.toggleClass('highlighted').hasClass('highlighted');
+
+			// Selecciona los íconos de la estrella
+			const starIconOn = $(this).find('[component="post/highlight/on"]');
+			const starIconOff = $(this).find('[component="post/highlight/off"]');
+
+			// Cambia el estado de los íconos y tooltips
+			if (isHighlighted) {
+				starIconOn.removeClass('hidden');
+				starIconOff.addClass('hidden');
+				$(this).attr('title', 'Unhighlight the comment');
+				alerts.success('starred message');
+			} else {
+				starIconOn.addClass('hidden');
+				starIconOff.removeClass('hidden');
+				$(this).attr('title', 'Highlight the comment');
+				alerts.success('unstarred message');
+			}
+		});
 
 		handleSelectionTooltip();
 

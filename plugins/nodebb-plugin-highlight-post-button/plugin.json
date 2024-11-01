@@ -1,0 +1,6 @@
+{
+  "id": "nodebb-plugin-highlight-post-button",
+  "url": "nodebb-plugin-highlight-post-button",
+  "library": "library.js",
+  "templates": "./templates"
+}
