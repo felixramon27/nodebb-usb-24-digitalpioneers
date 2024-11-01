@@ -60,6 +60,15 @@
 							</a>
 						</li>
 						{{{ end }}}
+						{{{ if !messages.self }}}
+						<li>
+							<a href="#" class="dropdown-item rounded-1" data-action="report" role="menuitem">
+								<span class="d-inline-flex align-items-center gap-2">
+									<i class="fa fa-fw fa-ban text-danger"></i> [[modules:report-message]]
+								</span>
+							</a>
+						</li>
+						{{{ end }}}
 
 						<li>
 							<a href="#" class="dropdown-item rounded-1" data-action="copy-text" data-mid="{messages.mid}" role="menuitem"><span class="d-inline-flex align-items-center gap-2"><i class="fa fa-fw fa-copy text-muted"></i> [[modules:chat.copy-text]]</span></a>
