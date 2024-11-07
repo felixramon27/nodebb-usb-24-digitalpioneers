@@ -227,9 +227,17 @@ define('forum/topic/events', [
 		post.find('[component="post/upvote"]').filter(function (index, el) {
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		}).toggleClass('upvoted', data.upvote);
+
 		post.find('[component="post/downvote"]').filter(function (index, el) {
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		}).toggleClass('downvoted', data.downvote);
+
+		post.find('[component="post/upvote/off"]').toggleClass('hidden', data.upvote);
+		post.find('[component="post/upvote/on"]').toggleClass('hidden', !data.upvote);
+
+		post.find('[component="post/downvote/off"]').toggleClass('hidden', data.downvote);
+		post.find('[component="post/downvote/on"]').toggleClass('hidden', !data.downvote);
+
 	}
 
 	function onNewNotification(data) {

@@ -105,10 +105,10 @@
 		
         {{{ if !reputation:disabled }}}
 		<div class="d-flex votes align-items-center">
-			<a component="post/upvote" href="#" class="btn-ghost-sm{{{ if posts.upvoted }}} upvoted{{{ end }}}" title="[[topic:upvote-post]]">
+		<a component="post/upvote" href="#" class="btn-ghost-sm{{{ if posts.upvoted }}} upvoted{{{ end }}}" title="[[topic:upvote-post]]">
 			<span class="menu-icon">
-				<i class="fa-regular fa-thumbs-up text-primary {{{ if !posts.upvoted }}}hidden{{{ end }}}" title="Like the comment"></i>
-				<i class="fa-regular fa-thumbs-up text-primary {{{ if posts.upvoted }}}hidden{{{ end }}}" title="Like the comment"></i>
+				<i component="post/upvote/on" class="fa-regular fa-thumbs-up text-primary {{{ if posts.upvoted }}}hidden{{{ end }}}" title="Like the comment"></i>
+				<i component="post/upvote/off" class="fa-solid fa-thumbs-up text-primary {{{ if !posts.upvoted }}}hidden{{{ end }}}" title="Like the comment"></i>
 			</span>
 
 			</a>
@@ -120,8 +120,8 @@
 			{{{ if !downvote:disabled }}}
 			<a component="post/downvote" href="#" class="btn-ghost-sm{{{ if posts.downvoted }}} downvoted{{{ end }}}" title="[[topic:downvote-post]]">
 			<span class="menu-icon">
-				<i class="fa-regular fa-thumbs-down text-primary {{{ if posts.downvoted }}}hidden{{{ end }}}" title="Dislike the comment"></i>
-				<i class="fa-solid fa-thumbs-down text-primary {{{ if !posts.downvoted }}}hidden{{{ end }}}" title="Dislike the comment"></i>
+				<i component="post/downvote/on" class="fa-solid fa-thumbs-down text-primary {{{ if !posts.downvoted }}}hidden{{{ end }}}" title="Dislike the comment"></i>
+				<i component="post/downvote/off" class="fa-regular fa-thumbs-down text-primary {{{ if posts.downvoted }}}hidden{{{ end }}}" title="Dislike the comment"></i>
 			</span>
 			</a>
 			{{{ end }}}
