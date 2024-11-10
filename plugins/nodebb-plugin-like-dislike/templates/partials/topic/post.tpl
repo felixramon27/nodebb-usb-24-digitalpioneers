@@ -115,7 +115,8 @@
 
 			<meta itemprop="upvoteCount" content="{posts.upvotes}">
 			<meta itemprop="downvoteCount" content="{posts.downvotes}">
-			<a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/vote-count" data-votes="{posts.votes}" title="[[global:voters]]">{posts.votes}</a>
+			<a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/upvote-count" data-upvotes="{posts.upvotes}" title="[[global:upvoters]]">{posts.upvotes}</a>
+			<a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/downvote-count" data-votes="{posts.downvotes}" title="[[global:downvoters]]">{posts.downvotes}</a>
 
 			{{{ if !downvote:disabled }}}
 			<a component="post/downvote" href="#" class="btn-ghost-sm{{{ if posts.downvoted }}} downvoted{{{ end }}}" title="[[topic:downvote-post]]">
