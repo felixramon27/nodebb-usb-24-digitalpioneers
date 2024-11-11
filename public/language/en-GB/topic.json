@@ -241,8 +241,8 @@
 
 	"navigator.index": "Post %1 of %2",
 	"navigator.unread": "%1 unread",
-	"upvote-post": "Upvote post",
-	"downvote-post": "Downvote post",
+	"upvote-post": "Like the post",
+	"downvote-post": "Dislike the post",
 	"post-tools": "Post tools",
 	"unread-posts-link": "Unread posts link",
 	"thumb-image": "Topic thumbnail image"

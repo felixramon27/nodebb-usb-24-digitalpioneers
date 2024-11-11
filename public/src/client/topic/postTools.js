@@ -164,7 +164,13 @@ define('forum/topic/postTools', [
 			return votes.toggleVote($(this), '.downvoted', -1);
 		});
 
-		postContainer.on('click', '[component="post/vote-count"]', function () {
+		postContainer.on('click', '[component="post/upvote-count"]', function () {
+			votes.showVotes(getData($(this), 'data-pid'));
+		});
+
+		postContainer.on('click', '[component="post/downvote-count"]', function () {
+			// Solo muestra las personas que dieron like. Puede ser un tema con la base de datos.
+			// Si no es asi, esta parte podria ignorarse.
 			votes.showVotes(getData($(this), 'data-pid'));
 		});
 

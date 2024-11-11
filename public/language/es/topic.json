@@ -212,8 +212,8 @@
     "post-quick-reply": "Quick reply",
     "navigator.index": "Post %1 of %2",
     "navigator.unread": "%1 unread",
-    "upvote-post": "Upvote post",
-    "downvote-post": "Downvote post",
+    "upvote-post": "Me gusta",
+    "downvote-post": "No me gusta",
     "post-tools": "Post tools",
     "unread-posts-link": "Unread posts link",
     "thumb-image": "Topic thumbnail image"

@@ -25,8 +25,11 @@ define('components', function () {
 		'post/anchor': function (index) {
 			return $('[component="post"][data-index="' + index + '"] [component="post/anchor"]');
 		},
-		'post/vote-count': function (pid) {
-			return $('[component="post"][data-pid="' + pid + '"] [component="post/vote-count"]');
+		'post/upvote-count': function (pid) {
+			return $('[component="post"][data-pid="' + pid + '"] [component="post/upvote-count"]');
+		},
+		'post/downvote-count': function (pid) {
+			return $('[component="post"][data-pid="' + pid + '"] [component="post/downvote-count"]');
 		},
 		'post/bookmark-count': function (pid) {
 			return $('[component="post"][data-pid="' + pid + '"] [component="post/bookmark-count"]');

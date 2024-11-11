@@ -70,11 +70,16 @@ define('forum/topic/events', [
 	}
 
 	function updatePostVotesAndUserReputation(data) {
-		const votes = $('[data-pid="' + data.post.pid + '"] [component="post/vote-count"]').filter(function (index, el) {
+		const upvotes = $('[data-pid="' + data.post.pid + '"] [component="post/upvote-count"]').filter(function (index, el) {
+			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
+		});
+		const downvotes = $('[data-pid="' + data.post.pid + '"] [component="post/downvote-count"]').filter(function (index, el) {
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		});
 		const reputationElements = $('.reputation[data-uid="' + data.post.uid + '"]');
-		votes.html(data.post.votes).attr('data-votes', data.post.votes);
+
+		upvotes.html(data.post.upvotes).attr('data-upvotes', data.post.upvotes);
+		downvotes.html(data.post.downvotes).attr('data-downvotes', data.post.downvotes);
 		reputationElements.html(data.user.reputation).attr('data-reputation', data.user.reputation);
 	}
 
@@ -227,9 +232,16 @@ define('forum/topic/events', [
 		post.find('[component="post/upvote"]').filter(function (index, el) {
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		}).toggleClass('upvoted', data.upvote);
+
 		post.find('[component="post/downvote"]').filter(function (index, el) {
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		}).toggleClass('downvoted', data.downvote);
+
+		post.find('[component="post/upvote/off"]').toggleClass('hidden', !data.upvote);
+		post.find('[component="post/upvote/on"]').toggleClass('hidden', data.upvote);
+
+		post.find('[component="post/downvote/off"]').toggleClass('hidden', data.downvote);
+		post.find('[component="post/downvote/on"]').toggleClass('hidden', !data.downvote);
 	}
 
 	function onNewNotification(data) {
