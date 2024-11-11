@@ -169,7 +169,7 @@ define('forum/topic/postTools', [
 		});
 
 		postContainer.on('click', '[component="post/downvote-count"]', function () {
-			// Solo muestra las personas que dieron like. Puede ser un tema con la base de datos. 
+			// Solo muestra las personas que dieron like. Puede ser un tema con la base de datos.
 			// Si no es asi, esta parte podria ignorarse.
 			votes.showVotes(getData($(this), 'data-pid'));
 		});
