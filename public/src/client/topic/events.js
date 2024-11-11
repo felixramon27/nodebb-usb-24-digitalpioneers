@@ -77,9 +77,9 @@ define('forum/topic/events', [
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		});
 		const reputationElements = $('.reputation[data-uid="' + data.post.uid + '"]');
-		
+
 		upvotes.html(data.post.upvotes).attr('data-upvotes', data.post.upvotes);
-    	downvotes.html(data.post.downvotes).attr('data-downvotes', data.post.downvotes);
+		downvotes.html(data.post.downvotes).attr('data-downvotes', data.post.downvotes);
 		reputationElements.html(data.user.reputation).attr('data-reputation', data.user.reputation);
 	}
 
@@ -237,12 +237,11 @@ define('forum/topic/events', [
 			return parseInt($(el).closest('[data-pid]').attr('data-pid'), 10) === parseInt(data.post.pid, 10);
 		}).toggleClass('downvoted', data.downvote);
 
-		post.find('[component="post/upvote/off"]').toggleClass('hidden',!data.upvote);
+		post.find('[component="post/upvote/off"]').toggleClass('hidden', !data.upvote);
 		post.find('[component="post/upvote/on"]').toggleClass('hidden', data.upvote);
 
 		post.find('[component="post/downvote/off"]').toggleClass('hidden', data.downvote);
 		post.find('[component="post/downvote/on"]').toggleClass('hidden', !data.downvote);
-
 	}
 
 	function onNewNotification(data) {

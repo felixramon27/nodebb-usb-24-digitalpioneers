@@ -165,11 +165,13 @@ define('forum/topic/postTools', [
 		});
 
 		postContainer.on('click', '[component="post/upvote-count"]', function () {
-			votes.showVotes(getData($(this), 'data-pid'));
+			// votes.showVotes(getData($(this), 'data-pid'));
+			votes.showUpvotes(getData($(this), 'data-pid'));
 		});
 
 		postContainer.on('click', '[component="post/downvote-count"]', function () {
-			votes.showVotes(getData($(this), 'data-pid')); //Se supone que muestra likes y dislikes. Pero solo muestra las personas que dieron like. Puede ser un tema con la base de datos. Si no es asi, esta parte podria ignorarse.
+			// votes.showVotes(getData($(this), 'data-pid')); // Se supone que muestra likes y dislikes. Pero solo muestra las personas que dieron like. Puede ser un tema con la base de datos. Si no es asi, esta parte podria ignorarse.
+			votes.showDownvotes(getData($(this), 'data-pid'));
 		});
 
 		postContainer.on('click', '[component="post/flag"]', function () {

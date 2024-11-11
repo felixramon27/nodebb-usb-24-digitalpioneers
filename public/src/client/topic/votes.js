@@ -11,12 +11,12 @@ define('forum/topic/votes', [
 		_showTooltip = {};
 		if (canSeeUpVotes()) {
 			const topicComponent = components.get('topic');
-    		
+
 			topicComponent.on('mouseenter', '[data-pid] [component="post/upvote-count"]', loadDataAndCreateTooltip);
-    		topicComponent.on('mouseleave', '[data-pid] [component="post/upvote-count"]', destroyTooltip);
+			topicComponent.on('mouseleave', '[data-pid] [component="post/upvote-count"]', destroyTooltip);
 
 			topicComponent.on('mouseenter', '[data-pid] [component="post/downvote-count"]', loadDataAndCreateTooltip);
-    		topicComponent.on('mouseleave', '[data-pid] [component="post/downvote-count"]', destroyTooltip);
+			topicComponent.on('mouseleave', '[data-pid] [component="post/downvote-count"]', destroyTooltip);
 		}
 	};
 
@@ -143,7 +143,6 @@ define('forum/topic/votes', [
 			});
 		});
 	};
-
 
 	return Votes;
 });
