@@ -1,0 +1,6 @@
+{
+  "id": "nodebb-plugin-digitalpioneers",
+  "url": "nodebb-plugin-digitalpioneers",
+  "library": "library.js",
+  "templates": "./templates"
+}
