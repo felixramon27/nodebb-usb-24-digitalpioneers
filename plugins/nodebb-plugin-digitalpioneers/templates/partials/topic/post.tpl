@@ -94,6 +94,12 @@
 
 	<div component="post/actions" class="d-flex justify-content-end gap-1 post-tools">
 		<!-- IMPORT partials/topic/reactions.tpl -->
+		 <a component="post/highlight" role="menuitem" href="#" data-highlight="{posts.highlight}">
+			<span class="menu-icon">
+				<i component="post/highlight/on" class="fa fa-fw text-primary fa-sharp fa-solid fa-star {{{ if !posts.highlight }}}hidden{{{ end }}}" title="unhighlight the comment"></i>
+				<i component="post/highlight/off" class="fa fa-fw text-primary fa-sharp fa-regular fa-star {{{ if posts.highlight }}}hidden{{{ end }}}" title="Highlight the comment"></i>
+			</span>
+		</a>
         <a component="post/bookmark" role="menuitem" href="#" data-bookmarked="{posts.bookmarked}">
 			<span class="menu-icon">
 				<i component="post/bookmark/on" class="fa fa-fw text-primary fa-bookmark {{{ if !posts.bookmarked }}}hidden{{{ end }}}" title="Unsave the Comment"></i>
@@ -105,25 +111,17 @@
 		
         {{{ if !reputation:disabled }}}
 		<div class="d-flex votes align-items-center">
-		<a component="post/upvote" href="#" class="btn-ghost-sm{{{ if posts.upvoted }}} upvoted{{{ end }}}" title="[[topic:upvote-post]]">
-			<span class="menu-icon">
-				<i component="post/upvote/on" class="fa-regular fa-thumbs-up text-primary {{{ if posts.upvoted }}}hidden{{{ end }}}""></i>
-				<i component="post/upvote/off" class="fa-solid fa-thumbs-up text-primary {{{ if !posts.upvoted }}}hidden{{{ end }}}"></i>
-			</span>
-
+			<a component="post/upvote" href="#" class="btn-ghost-sm{{{ if posts.upvoted }}} upvoted{{{ end }}}" title="[[topic:upvote-post]]">
+				<i class="fa fa-fw fa-chevron-up text-primary"></i>
 			</a>
 
 			<meta itemprop="upvoteCount" content="{posts.upvotes}">
 			<meta itemprop="downvoteCount" content="{posts.downvotes}">
-			<a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/upvote-count" data-upvotes="{posts.upvotes}" title="[[global:upvoters]]">{posts.upvotes}</a>
-			<a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/downvote-count" data-votes="{posts.downvotes}" title="[[global:downvoters]]">{posts.downvotes}</a>
+			<a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/vote-count" data-votes="{posts.votes}" title="[[global:voters]]">{posts.votes}</a>
 
 			{{{ if !downvote:disabled }}}
 			<a component="post/downvote" href="#" class="btn-ghost-sm{{{ if posts.downvoted }}} downvoted{{{ end }}}" title="[[topic:downvote-post]]">
-			<span class="menu-icon">
-				<i component="post/downvote/on" class="fa-solid fa-thumbs-down text-primary {{{ if !posts.downvoted }}}hidden{{{ end }}}"></i>
-				<i component="post/downvote/off" class="fa-regular fa-thumbs-down text-primary {{{ if posts.downvoted }}}hidden{{{ end }}}"></i>
-			</span>
+				<i class="fa fa-fw fa-chevron-down text-primary"></i>
 			</a>
 			{{{ end }}}
 		</div>
