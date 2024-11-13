@@ -3,11 +3,11 @@
 const assert = require('assert');
 const path = require('path');
 const fs = require('fs');
-const db = require('../mocks/databasemock');
-const plugins = require('../../src/plugins');
-const categories = require('../../src/categories');
-const topics = require('../../src/topics');
-const user = require('../../src/user');
+const db = require('../test/mocks/databasemock');
+const plugins = require('../src/plugins');
+const categories = require('../src/categories');
+const topics = require('../src/topics');
+const user = require('../src/user');
 const jsdomGlobal = require('jsdom-global');
 const { JSDOM } = require('jsdom');
 
@@ -22,7 +22,7 @@ describe('Topic Events', () => {
 		const chai = await import('chai');
         expect = chai.expect;
 
-		fooUid = await user.create({ username: 'foo', password: '123456' });
+		fooUid = await user.create({ username: 'foo', password: 'barbar', gdpr_consent: true });
 
 		const categoryObj = await categories.create({
 			name: 'Test Category',
@@ -77,8 +77,9 @@ describe('Topic Events', () => {
             };
 
 			// Mock the function
-			updatePostVotesAndUserReputation = require('../../public/src/client/topic/events').updatePostVotesAndUserReputation;
-
+			updatePostVotesAndUserReputation = require('../public/src/client/topic/events').updatePostVotesAndUserReputation;
+			
+			//assert.strictEqual(fooUid,1);
 			// Agrega elementos al DOM
 			
 			$('body').append(`
@@ -86,7 +87,7 @@ describe('Topic Events', () => {
                     <a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/upvote-count" data-upvotes="0" title="[[global:upvoters]]">0</a>
                     <a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/downvote-count" data-downvotes="0" title="[[global:downvoters]]">0</a>
                 </div>
-                <div class="reputation" data-uid="${fooUid}">0</div>
+                <div class="reputation" data-uid="${fooUid}" data-reputation="50">0</div>
 			`);
 			
 
@@ -94,17 +95,25 @@ describe('Topic Events', () => {
 
 	it('should update upvotes count', function () {
 		
-		console.log('Calling updatePostVotesAndUserReputation');
-		//assert.strictEqual(data, 2);
         updatePostVotesAndUserReputation(data);
-
-		const upvoteCountHtml = $('[data-pid="1"] [component="post/upvote-count"]').html();
-		//expect(upvoteCountHtml).to.equal('0', 'This should not pass');
-
-        console.log('Checking upvotes count');
 
 		assert.strictEqual($('[data-pid="1"] [component="post/upvote-count"]').html(), '2', 'Upvotes count should be updated');
         assert.strictEqual($('[data-pid="1"] [component="post/upvote-count"]').attr('data-upvotes'), '2', 'Upvotes attribute should be updated');
+	});
+
+	it('should update downvotes count', function () {
+		
+        updatePostVotesAndUserReputation(data);
+
+		assert.strictEqual($('[data-pid="1"] [component="post/downvote-count"]').html(), '1', 'Downvotes count should be updated');
+        assert.strictEqual($('[data-pid="1"] [component="post/downvote-count"]').attr('data-downvotes'), '1', 'Downvotes attribute should be updated');
+	});
+
+	it('should update reputation', function () {
+		updatePostVotesAndUserReputation(data);
+
+		assert.strictEqual($('.reputation[data-uid="' + fooUid + '"]').html(), '100', 'Reputation should be updated');
+		assert.strictEqual($('.reputation[data-uid="' + fooUid + '"]').attr('data-reputation'), '100', 'Reputation attribute should be updated');
 	});
 
 	});
