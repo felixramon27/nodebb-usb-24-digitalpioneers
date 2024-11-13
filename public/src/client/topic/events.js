@@ -253,10 +253,10 @@ define('forum/topic/events', [
 
 	// Export for testing
 	if (typeof module !== 'undefined' && module.exports) {
-    	module.exports = {
-        updatePostVotesAndUserReputation,
-    };
-}
+		module.exports = {
+			updatePostVotesAndUserReputation,
+		};
+	}
 
 	return Events;
 });
