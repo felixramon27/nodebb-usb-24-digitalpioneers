@@ -20,11 +20,11 @@ const twoHours = 7200000;
 
 UserReset.minSecondsBetweenEmails = 60;
 
-beforeEach(async () => {
-	const testUid = await user.getUidByEmail('test@example.org'); // Asegúrate de usar el email correcto de prueba
-	await db.sortedSetRemove('reset:issueDate:uid', testUid);
-	await db.deleteObjectField('locks', `reset${testUid}`);
-});
+// beforeEach(async () => {
+// 	const testUid = await user.getUidByEmail('test@example.org'); // Asegúrate de usar el email correcto de prueba
+// 	await db.sortedSetRemove('reset:issueDate:uid', testUid);
+// 	await db.deleteObjectField('locks', `reset${testUid}`);
+// });
 
 UserReset.validate = async function (code) {
 	const uid = await db.getObjectField('reset:uid', code);
