@@ -2,6 +2,8 @@
     "user-menu": "User menu",
     "banned": "Baneado",
     "unbanned": "Unbanned",
+	"student-role": "Estudiante",
+	"professor-role": "Profesor",
     "muted": "Muted",
     "unmuted": "Unmuted",
     "offline": "Desconectado",
