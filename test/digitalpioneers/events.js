@@ -64,7 +64,7 @@ describe('Topic Events', () => {
             jsdomGlobal();
             global.$ = require('jquery');
 
-			// Mock the define function
+			// Mock de la funcion define de ./../public/src/client/topic/events
             global.define = function (name, deps, callback) {
                 global[name] = callback(
                     {}, // postTools
@@ -84,18 +84,20 @@ describe('Topic Events', () => {
 			// Agrega elementos al DOM
 			
 			$('body').append(`
-				<div data-pid="1">
-                    <a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/upvote-count" data-upvotes="0" title="[[global:upvoters]]">0</a>
-                    <a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/downvote-count" data-downvotes="0" title="[[global:downvoters]]">0</a>
+                <div data-pid="1">
+                    <a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/upvote-count" data-upvotes="0"
+                        title="[[global:upvoters]]">0</a>
+                    <a href="#" class="px-2 mx-1 btn-ghost-sm" component="post/downvote-count" data-downvotes="0"
+                        title="[[global:downvoters]]">0</a>
                 </div>
                 <div class="reputation" data-uid="${fooUid}" data-reputation="50">0</div>
-			`);
+            `);
 			
 
 	});
 
 	after(async () => {
-        // Cleanup: Remove created data
+        // Limpieza de la base de datos
         if (topic && topic.tid) {
             await topics.delete(topic.tid);
         }
@@ -117,24 +119,33 @@ describe('Topic Events', () => {
 	it('should update upvotes count', function () {
 		
         updatePostVotesAndUserReputation(data);
+		// El elemento en el DOM con el componente debe tener el mismo valor que en data
+		assert.strictEqual($('[data-pid="1"] [component="post/upvote-count"]').html(), 
+		'2', 'Upvotes count should be updated');
 
-		assert.strictEqual($('[data-pid="1"] [component="post/upvote-count"]').html(), '2', 'Upvotes count should be updated');
-        assert.strictEqual($('[data-pid="1"] [component="post/upvote-count"]').attr('data-upvotes'), '2', 'Upvotes attribute should be updated');
+        assert.strictEqual($('[data-pid="1"] [component="post/upvote-count"]').attr('data-upvotes'), 
+		'2', 'Upvotes attribute should be updated');
 	});
 
 	it('should update downvotes count', function () {
 		
         updatePostVotesAndUserReputation(data);
-
-		assert.strictEqual($('[data-pid="1"] [component="post/downvote-count"]').html(), '1', 'Downvotes count should be updated');
-        assert.strictEqual($('[data-pid="1"] [component="post/downvote-count"]').attr('data-downvotes'), '1', 'Downvotes attribute should be updated');
+		// El elemento en el DOM con el componente debe tener el mismo valor que en data
+		assert.strictEqual($('[data-pid="1"] [component="post/downvote-count"]').html(), 
+		'1', 'Downvotes count should be updated');
+        
+		assert.strictEqual($('[data-pid="1"] [component="post/downvote-count"]').attr('data-downvotes'), 
+		'1', 'Downvotes attribute should be updated');
 	});
 
 	it('should update reputation', function () {
 		updatePostVotesAndUserReputation(data);
-
-		assert.strictEqual($('.reputation[data-uid="' + fooUid + '"]').html(), '100', 'Reputation should be updated');
-		assert.strictEqual($('.reputation[data-uid="' + fooUid + '"]').attr('data-reputation'), '100', 'Reputation attribute should be updated');
+		// El elemento en el DOM con el componente debe tener el mismo valor que en data
+		assert.strictEqual($('.reputation[data-uid="' + fooUid + '"]').html(), 
+		'100', 'Reputation should be updated');
+		
+		assert.strictEqual($('.reputation[data-uid="' + fooUid + '"]').attr('data-reputation'), 
+		'100', 'Reputation attribute should be updated');
 	});
 
 	});
