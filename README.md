@@ -55,17 +55,18 @@ If installing via the cloud (or using Docker), [please see cloud-based installat
 
 Para configurar NodeBB por primera vez, sigue estos comandos:
 
-./nodebb setup      # Configura NodeBB con opciones iniciales
-./nodebb build      # Construye los archivos estáticos
-./nodebb start      # Inicia el servidor de NodeBB2
+* ./nodebb setup      # Configura NodeBB con opciones iniciales
+* ./nodebb build      # Construye los archivos estáticos
+* ./nodebb start      # Inicia el servidor de NodeBB2
 
 
 ## Aplicar cambios
 
 Si realizas modificaciones en la configuración o en el código, es importante aplicar estos cambios reiniciando NodeBB. Para esto, usa los siguientes comandos en orden:
-./nodebb stop       # Detiene el servidor NodeBB
-./nodebb build      # Reconstruye los archivos estáticos
-./nodebb start      # Inicia nuevamente el servidor
+
+* ./nodebb stop       # Detiene el servidor NodeBB
+* ./nodebb build      # Reconstruye los archivos estáticos
+* ./nodebb start      # Inicia nuevamente el servidor
 
 ## Aditional Plugins
 
