@@ -40,22 +40,18 @@
 							</div>
 						</div>
 
-
-
 						<div class="mb-2 d-flex flex-column gap-2">
-    						<label for="isAdministrator">Role:</label>
+    						<label for="isAdministrator">[[register:role-professor]]</label>
     						<div>
         						<div class="form-check">
             						<input class="form-check-input" type="checkbox" name="isAdministrator" id="isAdministrator" aria-required="true" aria-describedby="isAdministrator-notify">
             						<label class="form-check-label" for="isAdministrator">
-               							 Profesor
+               							 [[register:Professor]]
            							</label>
         						</div>
-        						<span class="register-feedback text-xs text-danger" id="isAdministratorr-notify" aria-live="polite"></span>
+        						<span class="form-text text-xs">[[register:role-footer]]</span>
     						</div>
 						</div>
-
-
 
 						{{{ each regFormEntry }}}
 						<div class="mb-2 regFormEntry d-flex flex-column gap-2 {./styleName}">
