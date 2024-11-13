@@ -3,11 +3,11 @@
 const assert = require('assert');
 const path = require('path');
 const fs = require('fs');
-const db = require('../test/mocks/databasemock');
-const plugins = require('../src/plugins');
-const categories = require('../src/categories');
-const topics = require('../src/topics');
-const user = require('../src/user');
+const db = require('../mocks/databasemock');
+const plugins = require('../../src/plugins');
+const categories = require('../../src/categories');
+const topics = require('../../src/topics');
+const user = require('../../src/user');
 const jsdomGlobal = require('jsdom-global');
 const { JSDOM } = require('jsdom');
 
@@ -25,9 +25,11 @@ describe('Topic Events', () => {
 		fooUid = await user.create({ username: 'foo', password: 'barbar', gdpr_consent: true });
 
 		const categoryObj = await categories.create({
-			name: 'Test Category',
-			description: 'Test category created by testing script',
-		});
+            name: 'Test Category',
+			cid: 1,
+            description: 'Test category created by testing script',
+        });
+		
 		topic = await topics.post({
 			title: 'topic events testing',
 			content: 'foobar one two three',
@@ -77,9 +79,8 @@ describe('Topic Events', () => {
             };
 
 			// Mock the function
-			updatePostVotesAndUserReputation = require('../public/src/client/topic/events').updatePostVotesAndUserReputation;
+			updatePostVotesAndUserReputation = require('../../public/src/client/topic/events').updatePostVotesAndUserReputation;
 			
-			//assert.strictEqual(fooUid,1);
 			// Agrega elementos al DOM
 			
 			$('body').append(`
@@ -92,6 +93,26 @@ describe('Topic Events', () => {
 			
 
 	});
+
+	after(async () => {
+        // Cleanup: Remove created data
+        if (topic && topic.tid) {
+            await topics.delete(topic.tid);
+        }
+        if (fooUid) {
+            const userExists = await user.exists(fooUid);
+            
+            if (userExists) {
+                await user.deleteAccount(fooUid);
+            } else {
+                console.error('User does not exist:', fooUid);
+            }
+        }
+        const category = await categories.getCategoriesData(1);
+        if (category && category.cid) {
+            await categories.purgeCategory(cid, category);
+        }
+    });
 
 	it('should update upvotes count', function () {
 		
