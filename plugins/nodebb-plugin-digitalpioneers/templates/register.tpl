@@ -43,16 +43,17 @@
 
 
 						<div class="mb-2 d-flex flex-column gap-2">
-
-							<div class="form-group">
-								<label for="role" class="mb-3"> Selecciona tu rol de usuario: </label>
-								<select class="form-control" id="selectRole" name="selectRole">
-									<option value="user"> Estudiante </option>
-									<option value="admin"> Profesor </option>
-								</select>
-							</div>
+    						<label for="isAdministrator">Role:</label>
+    						<div>
+        						<div class="form-check">
+            						<input class="form-check-input" type="checkbox" name="isAdministrator" id="isAdministrator" aria-required="true" aria-describedby="isAdministrator-notify">
+            						<label class="form-check-label" for="isAdministrator">
+               							 Profesor
+           							</label>
+        						</div>
+        						<span class="register-feedback text-xs text-danger" id="isAdministratorr-notify" aria-live="polite"></span>
+    						</div>
 						</div>
-
 
 
 
