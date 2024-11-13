@@ -48,14 +48,36 @@ NodeBB requires the following software to be installed:
 [Please refer to platform-specific installation documentation](https://docs.nodebb.org/installing/os).
 If installing via the cloud (or using Docker), [please see cloud-based installation documentation](https://docs.nodebb.org/installing/cloud/).
 
+
+## Cómo ejecutar NodeBB
+
+## Configuración inicial
+
+Para configurar NodeBB por primera vez, sigue estos comandos:
+
+* ./nodebb setup      # Configura NodeBB con opciones iniciales
+* ./nodebb build      # Construye los archivos estáticos
+* ./nodebb start      # Inicia el servidor de NodeBB2
+
+
+## Aplicar cambios
+
+Si realizas modificaciones en la configuración o en el código, es importante aplicar estos cambios reiniciando NodeBB. Para esto, usa los siguientes comandos en orden:
+
+* ./nodebb stop       # Detiene el servidor NodeBB
+* ./nodebb build      # Reconstruye los archivos estáticos
+* ./nodebb start      # Inicia nuevamente el servidor
+
 ## Aditional Plugins
 
-To run the additional plugins that were implemented, you need to activate them manually. To do this, for each folder within the "plugins" folder you must perform: 
+To run the additional plugins that were implemented, you need to activate them manually. To do this, for each folder within the "plugins" folder you must perform:
+
 * Go to each folder
-* Run "sudo npm link"
-* Return to the outermost folder
-* Run "npm link [folder name in plugin]"
-* Run "./nodebb activate [plugin folder name]"
+* cd plugins/nombre-del-plugin
+* sudo npm link
+* cd ../..
+* npm link nombre-del-plugin
+* ./nodebb activate nombre-del-plugin
 
 Once these steps have been carried out for each folder within the plugin, you will have installed and activated the plugins created for this project
 
@@ -69,7 +91,6 @@ It is important to ensure that your NodeBB and database servers are secured. Bea
     * Familiarise yourself with [Redis Security](http://redis.io/topics/security)
 2. Use `iptables` to secure your server from unintended open ports. In Ubuntu, `ufw` provides a friendlier interface to working with `iptables`.
     * e.g. If your NodeBB is proxied, no ports should be open except 80 (and possibly 22, for SSH access)
-
 
 ## Upgrading NodeBB
 
