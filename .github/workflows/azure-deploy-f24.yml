@@ -19,7 +19,7 @@ jobs:
       ./.github/workflows/test.yaml
 
   build-and-deploy:
-    if: github.repository == 'cmu-313/NodeBB'
+    if: github.repository == 'felixramon27/nodebb-usb-24-digitalpioneers'
     needs: lint-and-test
 
     runs-on: ubuntu-latest
